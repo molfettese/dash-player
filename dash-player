@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player DASH</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/shaka-player.compiled.min.js"></script>
+</head>
+<body style="text-align: center;">
+    <h2>Streaming Video</h2>
+    <video id="video" width="80%" controls autoplay></video>
+    <script>
+        async function initPlayer() {
+            const video = document.getElementById("video");
+            const player = new shaka.Player(video);
+            try {
+                await player.load("https://linear303-it-dash1-prd.selector.skycdn.it/016a/31035/FHD/skysport24/master_stereo.mpd");
+                console.log("Video caricato con successo!");
+            } catch (e) {
+                console.error("Errore nel caricamento:", e);
+            }
+        }
+        document.addEventListener("DOMContentLoaded", initPlayer);
+    </script>
+</body>
+</html>
